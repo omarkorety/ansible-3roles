@@ -1,0 +1,3 @@
+---
+# vars file for roles/iti-webserver-role
+# my_pri: {{ ansible_eth0.ipv4.address }}

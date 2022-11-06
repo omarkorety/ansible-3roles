@@ -1,0 +1,5 @@
+---
+# defaults file for roles/iti-webserver-role
+my_name: omar
+pri_ip: "10.0.0.178"
+# ansible_host: 52.71.244.35

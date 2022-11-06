@@ -1,0 +1,8 @@
+[webservers]
+webserver.example.com
+
+[jenkinsserver]
+jenkins.example.com
+
+[dbservers]
+mariadb.exaple.com

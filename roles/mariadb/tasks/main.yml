@@ -1,0 +1,30 @@
+---
+# tasks file for mariadb
+- name: install mariadb
+  yum:
+    name:
+      - mariadb-server
+      - python3-PyMySQL
+    state: present
+
+- name: start mariadb
+  ansible.builtin.systemd:
+    name: mariadb
+    state: started
+    enabled: yes
+
+- name: Download and use my.cnf as the database configuration
+  get_url:
+    url: https://drive.google.com/uc?export=download&id=1QIeumZzk1_PL6pVf699ff8iurEnuwk7y
+    dest: /var/lib/mysql/
+  notify: restart_mariadb
+
+- name: Configure Root login
+  mysql_user:
+    login_user: "{{ mysql_username }}"
+    login_password: "{{ mysql_password }}"
+    user: "{{ mysql_username }}"
+    check_implicit_admin: true
+    password: "{{ mysql_password }}"
+    host: localhost
+

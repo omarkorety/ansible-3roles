@@ -1,0 +1,17 @@
+---
+# tasks file for roles/iti-webserver-role
+- name: install Nginx
+  apt:
+    name: nginx
+    state: present
+- name: start and enable nginx service
+  service :
+    name: nginx
+    state: started
+    enabled: true
+- name: Copy website files to the server's document root
+  template:
+    src: index.html
+    dest: /var/www/html
+    mode: 0644
+  notify: Restart Nginx
